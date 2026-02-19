@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TZStudies</title>
+  <link rel="icon" href="{{ url_for('static', filename='tutors/tzstudies.png') }}" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>.hidden{display:none!important}</style>
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<!-- Hero / intro ------------------------------------------------------ -->
+<section class="hero parallax">
+  <div class="hero-content">
+    <h1 class="hero-title">Unlock Your Exam&nbsp;Success</h1>
+    <p class="hero-subtitle">Free past papers, worked solutions &amp; trusted tutors—everything you need to excel.</p>
+    <a href="#examSection" class="btn cta-btn">Browse Exams</a>
+  </div>
+</section>
+
+<!-- What we offer ------------------------------------------------------ -->
+<section class="features reveal">
+  <div class="feature">
+    <h3>Past Papers</h3>
+    <p>Instant PDF downloads for Standard 4, Form 2 &amp; Form 4.</p>
+  </div>
+  <div class="feature">
+    <h3>Answer Keys</h3>
+    <p>Learn faster with detailed marking schemes.</p>
+  </div>
+  <div class="feature">
+    <h3>Expert Tutors</h3>
+    <p>Connect with vetted teachers in every major city.</p>
+  </div>
+</section>
+
+<!-- Search & filters --------------------------------------------------- -->
+<section class="search-section reveal">
+  <div class="container">
+    <h2 class="section-heading">Find Your Paper</h2>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search exams..." />
+    </div>
+    <div id="gradeFilters" class="grade-filter" style="text-align:center;margin:1.5rem 0;">
+      <button class="btn grade-btn" data-grade="">All Grades</button>
+      <button class="btn grade-btn" data-grade="S4">Standard 4</button>
+      <button class="btn grade-btn" data-grade="F4">Form 4</button>
+      <button class="btn grade-btn" data-grade="F2">Form 2</button>
+    </div>
+    <div style="text-align:center;margin-bottom:2rem;">
+      <a href="{{ url_for('upload_exams') }}" class="btn" title="Share any past-exam PDF you'd like others to use">
+        Upload Past Exams
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Exams -------------------------------------------------------------- -->
+<main class="container">
+  <section id="examSection" class="exam-list-section reveal">
+    <h2 class="section-heading">Exam Papers</h2>
+    <div id="examGrid" class="exam-grid">
+      {% for file in exam_files %}
+      <div class="exam-card reveal" data-grade="{{ file.split('-')[1]|default('') }}">
+        <p class="exam-title">{{ file }}</p>
+        <a href="{{ url_for('view_exam', filename=file) }}" class="exam-link btn">View</a>
+        {% if file in answer_key_files %}
+        <a href="{{ url_for('download_key', filename=answer_key_files[file]) }}" target="_blank" class="answer-link btn">Answer Key</a>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+
+{% include 'footer.html' %}
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script>
+// Parallax effect on hero text
+window.addEventListener('scroll', () => {
+  const offset = window.scrollY * 0.4;
+  document.querySelector('.hero-content').style.transform = `translateY(${offset}px)`;
+});
+
+// Reveal‑on‑scroll for .reveal elements
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.grade-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const grade = btn.dataset.grade;
+    document.querySelectorAll('#examGrid .exam-card').forEach(card => {
+      card.classList.toggle('hidden', grade && card.dataset.grade !== grade);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

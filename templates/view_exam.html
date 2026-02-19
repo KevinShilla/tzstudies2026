@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-5xl mx-auto py-10 space-y-6">
+  <h2 class="text-2xl font-semibold">{{ filename }}</h2>
+
+  <!-- PDF inline preview -->
+  <iframe src="{{ url_for('download', filename=filename) }}#toolbar=0"
+          class="w-full h-[80vh] rounded shadow ring-1 ring-gray-200"></iframe>
+
+  <div class="text-right">
+    <a href="{{ url_for('download', filename=filename) }}"
+       class="btn">Download PDF</a>
+  </div>
+</div>
+{% endblock %}

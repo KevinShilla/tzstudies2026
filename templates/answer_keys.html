@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Answer Keys - TZStudies</title>
+  <link rel="icon" href="{{ url_for('static', filename='tutors/tzstudies.png') }}" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='tutors/tzstudies.png') }}" alt="TZStudies Logo" class="logo-img">
+        <h1>TZStudies</h1>
+      </div>
+    </div>
+    <div class="navbar-center">
+      <nav class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/tutors" class="nav-link">Find Tutors</a>
+        <a href="/become_tutor" class="nav-link">Become a Tutor</a>
+        <a href="/answer_keys" class="nav-link">Answer Keys</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Answer Keys</h2>
+      <p>Download answer keys for past national exams.</p>
+    </div>
+  </section>
+
+  <!-- Answer Keys List -->
+  <main class="container">
+    <section class="answer-key-list">
+      <h2>Answer Keys</h2>
+      <div class="exam-grid">
+        {% for key in keys %}
+        <div class="exam-card">
+          <p class="exam-title">{{ key }}</p>
+          <a href="{{ url_for('download_key', filename=key) }}" target="_blank" class="answer-link">Download Answer Key</a>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; {{ current_year|default(2025) }} TZStudies. All rights reserved.</p>
+  </footer>
+</body>
+</html>

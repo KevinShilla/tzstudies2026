@@ -1,0 +1,32 @@
+<header class="navbar">
+  <!-- left: logo -->
+  <div class="navbar-left">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='tutors/tzstudies.png') }}"
+           class="logo-img" alt="TZStudies">
+      <h1>TZStudies</h1>
+    </div>
+  </div>
+
+  <!-- centre: site nav -->
+  <div class="navbar-center">
+    <nav class="nav-links">
+      <a href="{{ url_for('index') }}"          class="nav-link">Home</a>
+      <a href="{{ url_for('tutors') }}"         class="nav-link">Find Tutors</a>
+      <a href="{{ url_for('become_tutor') }}"   class="nav-link">Become a Tutor</a>
+      <a href="{{ url_for('answer_keys_page') }}" class="nav-link">Answer Keys</a>
+    </nav>
+  </div>
+
+  <!-- right: auth / user menu -->
+  <div class="nav-auth">
+    {% if current_user.is_authenticated %}
+       <span>Hello, {{ current_user.name.split(' ')[0] }}</span>
+       <a href="{{ url_for('history') }}" class="nav-link">My Papers</a>
+       <a href="{{ url_for('logout') }}"  class="nav-link">Logout</a>
+    {% else %}
+       <a href="{{ url_for('login') }}"   class="nav-link">Login</a>
+       <a href="{{ url_for('signup') }}"  class="nav-link">Sign Up</a>
+    {% endif %}
+  </div>
+</header>

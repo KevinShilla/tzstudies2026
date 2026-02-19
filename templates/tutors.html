@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tutors – TZStudies</title>
+  <link rel="icon" href="{{ url_for('static', filename='tutors/tzstudies.png') }}" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+  <!-- Navbar (same as other pages) -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='tutors/tzstudies.png') }}" alt="TZStudies Logo" class="logo-img">
+        <h1>TZStudies</h1>
+      </div>
+    </div>
+    <div class="navbar-center">
+      <nav class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/tutors" class="nav-link">Find Tutors</a>
+        <a href="/become_tutor" class="nav-link">Become a Tutor</a>
+        <a href="/answer_keys" class="nav-link">Answer Keys</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Find a Tutor</h2>
+      <p>Select a subject to filter the list—leave blank to view all tutors.</p>
+
+      <div id="filterBox" style="margin-top:1rem;">
+        <select id="subjectSelect" class="btn">
+          <option value="">All Subjects</option>
+          <option value="English">English</option>
+          <option value="Math">Math</option>
+          <option value="Kiswahili">Kiswahili</option>
+          <option value="Social Studies">Social Studies</option>
+          <option value="Geography"> Geography</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tutor Cards -->
+  <main class="container">
+    <div id="tutorGrid" class="exam-grid"><!-- re-use the grid class -->
+
+      <!-- Ashery Richard -->
+      <div class="tutor-card tutor" data-subjects="Kiswahili,English">
+        <img src="{{ url_for('static', filename='tutors/ashery_richard.jpg') }}" alt="Ashery Richard">
+        <h3>Ashery Richard</h3>
+        <p><strong>Subjects:</strong> Kiswahili, English</p>
+        <p><strong>School:</strong> St Anthony of Padua</p>
+        <p><strong>Rate:</strong> TSh 12,000/hr</p>
+        <p><strong>Classes:</strong> Std&nbsp;7 – Form&nbsp;4</p>
+        <p><strong>Phone:</strong> +255 766 752 978</p>
+      </div>
+
+      <!-- Haji -->
+      <div class="tutor-card tutor" data-subjects="Social Studies">
+        <img src="{{ url_for('static', filename='tutors/haji.jpg') }}" alt="Haji">
+        <h3>Haji</h3>
+        <p><strong>Subjects:</strong> Social Studies</p>
+        <p><strong>School:</strong> St Anthony of Padua</p>
+        <p><strong>Rate:</strong> TSh 11,000/hr</p>
+        <p><strong>Classes:</strong> Std&nbsp;6 – Form&nbsp;3</p>
+        <p><strong>Phone:</strong> +255 0789 931 538</p>
+      </div> 
+
+      <div class="tutor-card tutor" data-subjects="Science,English">
+        <img src="{{ url_for('static', filename='tutors/gaudensi_mhowa.jpg') }}" alt="Gaudensi Mhowa">
+        <h3>Gaudensi Mhowa</h3>
+        <p><strong>Subjects:</strong> Science, English</p>
+        <p><strong>School:</strong> Bensal english medium school</p>
+        <p><strong>Rate:</strong> TSh 8,000/hr</p>
+        <p><strong>Classes:</strong> Std&nbsp;1 – Std&nbsp;7</p>
+        <p><strong>Phone:</strong> +255 755 381 509</p>
+      </div> 
+
+      <div class="tutor-card tutor" data-subjects="English,Kiswahili">
+        <img src="{{ url_for('static', filename='tutors/Kredo_James.jpg') }}" alt="Kredo James">
+        <h3>Kredo James</h3>
+        <p><strong>Subjects:</strong> English, Kiswahili</p>
+        <p><strong>School:</strong> Bensal primary school</p>
+        <p><strong>Rate:</strong> TSh 8,000/hr</p>
+        <p><strong>Classes:</strong> Standard&nbsp;4 – Standard&nbsp;6</p>
+        <p><strong>Phone:</strong> +255 742 139 365</p>
+      </div>
+
+      <div class="tutor-card tutor" data-subjects="Geography">
+        <img class="face-up" src="{{ url_for('static', filename='tutors/Nisile_Ndagile.jpg') }}" alt="Nisile Ndagile">
+        <h3>Nisile Ndagile</h3>
+        <p><strong>Subjects:</strong> Geography</p>
+        <p><strong>School:</strong> Secondary School</p>
+        <p><strong>Rate:</strong> TSh 20,000/hr</p>
+        <p><strong>Classes:</strong> Form&nbsp;1 – Form&nbsp;6</p>
+        <p><strong>Phone:</strong> +255 759 329 075</p>
+      </div> 
+
+      <div class="tutor-card tutor" data-subjects="Math">
+        <img src="{{ url_for('static', filename='tutors/Hermina_Nkondola.jpg') }}" alt="Hermina Nkondola">
+        <h3>Hermina Nkondola</h3>
+        <p><strong>Subjects:</strong>Mathematics</p>
+        <p><strong>School:</strong> Bigwa primary school </p>
+        <p><strong>Rate:</strong> TSh 7,500/hr</p>
+        <p><strong>Classes:</strong> Standard&nbsp;1 – Standard&nbsp;6</p>
+        <p><strong>Phone:</strong> +255 718 044 438</p>
+      </div>
+
+      <div class="tutor-card tutor" data-subjects="Math">
+        <img class="face-up" src="{{ url_for('static', filename='tutors/Gerald.jpg') }}" alt="Gerald">
+        <h3>Gerald</h3>
+        <p><strong>Subjects:</strong>Mathematics</p>
+        <p><strong>School:</strong> St Maxmillian secondary school </p>
+        <p><strong>Rate:</strong> TSh 10,500/hr</p>
+        <p><strong>Classes:</strong> Form&nbsp;1 – Form&nbsp;3</p>
+        <p><strong>Phone:</strong> +255 62 819 3194</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; {{ current_year|default(2025) }} TZStudies. All rights reserved.</p>
+  </footer>
+
+  <!-- Filter Script -->
+  <script>
+    document.getElementById('subjectSelect').addEventListener('change', function () {
+      const chosen = this.value;
+      document.querySelectorAll('#tutorGrid .tutor').forEach(card => {
+        const subjects = card.dataset.subjects.split(',');
+        card.style.display = (!chosen || subjects.includes(chosen)) ? 'block' : 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>

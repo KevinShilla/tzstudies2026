@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Exams – TZStudies</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+  <!-- reuse your navbar -->
+  {% include 'navbar.html' %}
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Upload Past Exams</h2>
+      <p>Share a PDF so all TZ students can benefit.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for cat, msg in messages %}
+        <div class="alert alert-{{ cat }}">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('upload_exams') }}"
+          method="POST"
+          enctype="multipart/form-data"
+          class="form-card">
+      <label for="exam_pdf">Select PDF file:</label><br>
+      <input type="file" id="exam_pdf" name="exam_pdf" accept=".pdf" required><br><br>
+      <button type="submit" class="btn">Send to TZStudies</button>
+    </form>
+  </main>
+
+  <!-- reuse your footer -->
+  {% include 'footer.html' %}
+
+</body>
+</html>

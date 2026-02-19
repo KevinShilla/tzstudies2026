@@ -1,0 +1,308 @@
+/* Reset & Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1d3557;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* Nav Links */
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-weight: 500;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover {
+  transform: scale(1.1);
+}
+
+.hero {
+  background: linear-gradient(45deg, #1d3557, #457b9d, #a8dadc);
+  background-size: 600% 600%;
+  animation: gradientAnimation 10s ease infinite;
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Exam Cards and Tutor Cards */
+.exam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.exam-card {
+  animation: float 3s ease-in-out infinite;
+}
+
+.tutor-card {
+  animation: none;
+}
+
+.tutor-card {
+  padding: 1rem;
+  max-width: 800px;
+  margin: 1rem auto;
+}
+
+.tutor-card img {
+  width: 250px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+
+.exam-card:hover, .tutor-card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.exam-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Buttons */
+.exam-link, .answer-link, .btn {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  margin: 0.25rem;
+  background-color: #457b9d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.exam-link:hover, .answer-link:hover, .btn:hover {
+  background-color: #1d3557;
+}
+
+/* Form */
+.tutor-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Alerts */
+.alert {
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.footer {
+  background-color: #1d3557;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .exam-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.exam-card {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.exam-card.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+.hero.parallax {
+  position: relative;
+  height: 100vh;
+  background: #0a0a0a radial-gradient(circle at 30% 50%, #ff6139 0%, rgba(255,97,57,0) 40%) no-repeat center/cover fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+.hero-subtitle {
+  color: #e0e0e0;
+  font-size: 1.25rem;
+  max-width: 640px;
+  margin-inline: auto;
+}
+.cta-btn {
+  margin-top: 2rem;
+}
+
+.features {
+  background: #101f33;
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+.feature h3 {
+  color: #a8dadc;
+  font-size: 1.6rem;
+  margin-bottom: .5rem;
+}
+
+.section-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin: 3rem 0 1rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.exam-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  padding: 1rem;
+}
+.exam-card:hover {
+  box-shadow: 0 4px 25px rgba(0,0,0,0.12);
+  transform: translateY(-6px) scale(1.03);
+}
+
+.grade-filter .btn {
+  margin: .25rem;
+}
+
+@media(max-width:768px){
+  .hero-title{font-size:clamp(2rem,8vw,3rem)}
+}
+
+.tutor-card img {
+  width: 200px;      
+  height: 200px;     
+  object-fit: cover; 
+  margin: 0 auto 0.5rem;
+}
+
+.tutor-card img.face-up{
+  object-position:top;   
+}
+.nav-auth { margin-left: auto; display: flex; align-items: center; }
+.nav-auth .nav-link { margin-left: 1rem; }
+
+.btn-sm{
+  @apply inline-block px-3 py-1 rounded bg-primary text-white text-xs
+          hover:bg-blue-900 transition;
+}
+.text-primary{color:#1d3557}
+.bg-primary{background:#1d3557}
+
+.nav-auth span{color:#fbbf24;font-weight:600}
